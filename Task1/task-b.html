@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script>
+        //making sure that whole document is loaded
+        $(document).ready(function(){
+              //Whenever a keyboard key is released
+                $('#txt').keyup(function(){
+                    //displays the value in paragraph
+                    $('#view').text($(this).val());
+             	  });
+          });
+      </script>
+      <style type="text/css">
+        input[type=text], select {
+          width: 50%;
+          padding: 12px 20px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+      </style>
+    </head>
+  <body>
+
+    <strong style="font-size: 20px; ">Enter text here : </strong>
+    <!--Input element in which the text is to be entered-->
+    <input type = "text" id="txt" style=""></input>
+    <!--Paragraph element in which the data entered in input is reflected-->
+    <p id="view"></p>
+  </body>
+</html>

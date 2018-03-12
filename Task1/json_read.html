@@ -1,57 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>JavaScript - read JSON from URL</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  
-<script>
-function printit(){
+	<head>
+		<title>Read JSON from URL</title>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		  
+		<script>
+			function getCities(){
+				//To get ACCESS-CONTROL-ALLOW-ORIGIN
+				const proxyurl = "https://cors-anywhere.herokuapp.com/";
+				//URL from which we have to extract city names
+				const url = "http://roadtrippers.herokuapp.com/api/v1/cities/"; 
+				//To get json data
+				$.getJSON(proxyurl+url, function(data) {
+					document.getElementById("demo").innerHTML = "Cities";
+					var items = [];
+					//pushing keys and values to items array
+					$.each( data, function( key, val ) {
+							items.push(val);
+					});
+					//pushing all the cities to cities array
+					var cities = [];
+					var i = 0;
+					for(i = 0 ; i < items[0].length ; i++){
+						data = items[0][i];
+						//parse every JSON object to get city names
+						var x = JSON.parse(JSON.stringify(data));
+						//Creating a list for the city names
+						cities.push("<li id='" + x.id + "'>" + x.name + "</li>");
+							
+					}
+					$( "<ul/>", {
+							"class": "my-new-list",
+							html: cities.join( "" )
+					}).appendTo( "body" );
+				});
+			}
+		</script>
+		<style type="text/css">
+			button {
+			    background-color: #008CBA;
+			    border: none;
+			    color: white;
+			    padding: 15px 32px;
+			    text-align: center;
+			    text-decoration: none;
+			    display: inline-block;
+			    font-size: 16px;
+			}
+			ul{
+				align-content: center;
+			    background: #cce5ff;
+			    margin-left: 5px;
+			    margin-right : 50%;
+			}
+			ul li{
+				font-family: "Times New Roman"; 
+				font-size: 21px;
+			}
+			body {
+    			background-color: #cce5ff;
+			}
+		</style>
+		
+	</head>
 
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
-const url = "http://roadtrippers.herokuapp.com/api/v1/cities/"; // site that doesn’t send Access-Control-*
-/*
-fetch(proxyurl + url)
-.then(response => response.text())
-.then(contents => console.log(contents))
-.catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))*/
-$.getJSON(proxyurl+url, function(data) {
-		document.getElementById("demo").innerHTML = "Cities";
-		var items = [];
-		$.each( data, function( key, val ) {
-				items.push(val);
-		});
-		var cities = [];
-		data = items[0][1];
-		console.log(data);
-		var i = 0;
-		for(i = 0 ; i < items[0].length ; i++){
-			data = items[0][i];
-			var x = JSON.parse(JSON.stringify(data));
-			cities.push("<li id='" + x.id + "'>" + x.name + "</li>");
-				
-		}
-		var i = 0;
-		for(i = cities.length; i >= 0 ; i--){
-			
-			console.log(cities[i]);
-		}
-		$( "<ul/>", {
-				"class": "my-new-list",
-				html: cities.join( "" )
-			  }).appendTo( "body" );
-	});
-}
-
-</script>
-
-</head>
-
-<body>
-    <div class="mypanel">
-
-    </div>
-<button type="button"
-onclick="printit()">Get Cities</button>   
-<h1 id = "demo"></h1>
-</body>
+	<body>
+		<!--To get the cities click on this button: getCities() is called on clicking this button-->
+		<button type="button" onclick="getCities()">Get Cities</button>   
+		<h1 id = "demo"></h1>
+	</body>
 </html>
