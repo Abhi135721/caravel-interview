@@ -1,0 +1,65 @@
+[
+    {
+        "question": "Which one of these is not a programming language",
+        "options": [
+            {
+                "text": "c",
+                "is_correct": "false"
+            },
+            {
+                "text": "English",
+                "is_correct": "true"
+            },
+            {
+                "text": "python",
+                "is_correct": "false"
+            },
+            {
+                "text": "java",
+                "is_correct": "false"
+            }
+        ]
+    },
+    {
+        "question": "Elixir is built upon the VM of",
+        "options": [
+            {
+                "text": "Java",
+                "is_correct": "false"
+            },
+            {
+                "text": "Python",
+                "is_correct": "false"
+            },
+            {
+                "text": "Ruby",
+                "is_correct": "false"
+            },
+            {
+                "text": "Erlang",
+                "is_correct": "true"
+            }
+        ]
+    },
+    {
+        "question": "Which one of these is an equation for sigmoid",
+        "options": [
+            {
+                "text": "1/1+e-x",
+                "is_correct": "true"
+            },
+            {
+                "text": "1/1-e-x",
+                "is_correct": "false"
+            },
+            {
+                "text": "1/e-x",
+                "is_correct": "false"
+            },
+            {
+                "text": "None",
+                "is_correct": "false"
+            }
+        ]
+    }
+]
